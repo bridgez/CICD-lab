@@ -1,6 +1,6 @@
 pipeline {
    agent any
-   def appName='cicd2'
+   appName='cicd2'
    //checkout scm
    stages {
       stage('Build image') {
