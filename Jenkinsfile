@@ -13,8 +13,8 @@ pipeline {
      steps {
         echo 'Testing...'
         sh 'docker login -u bridgez -p study708058'
-        docker tag cicd2 docker.io/bridgez/cicd2:20191720
-        docker push docker.io/bridgez/cicd2:20191720
+        docker tag cicd2 docker.io/bridgez/cicd3
+        docker push docker.io/bridgez/cicd3
      }
    }
    stage('Deploy') {
