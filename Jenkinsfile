@@ -9,9 +9,12 @@ pipeline {
           echo "Running ${env.BUILD_ID} ${env.BUILD_DISPLAY_NAME} on ${env.NODE_NAME} and JOB ${env.JOB_NAME}"
         }
    }
-   stage('Test') {
+   stage('Push to registry') {
      steps {
         echo 'Testing...'
+        sh 'docker login -u bridgez -p study708058'
+        docker tag cicd2 docker.io/bridgez/cicd2:20191720
+        docker push docker.io/bridgez/cicd2:20191720
      }
    }
    stage('Deploy') {
