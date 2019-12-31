@@ -25,8 +25,8 @@ pipeline {
         echo 'Pushing to registry...'
 	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	     sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-        sh 'docker tag cicd:${build_tag} bridgez/cicd:${build_tag}'
-        sh 'docker push bridgez/cicd:${build_tag}'
+	     sh 'docker tag cicd:${BUILD_TAG} bridgez/cicd:${BUILD_TAG}'
+             sh 'docker push bridgez/cicd:${build_tag}'
 	}
      }
    }
