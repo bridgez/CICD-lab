@@ -5,9 +5,9 @@ pipeline {
       stage('Build image') {
         steps {
           echo 'Building image...'
-	  parameters {
-       	      string(name: 'build_tag', defaultValue: 'v2', description: 'version tag')
-	  }
+	//  parameters {
+       	//      string(name: 'build_tag', defaultValue: 'v2', description: 'version tag')
+	//  }
 	//  def build_tag = 'v2'
 	//  script {
         //      build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
