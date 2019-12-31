@@ -12,9 +12,11 @@ pipeline {
    stage('Push to registry') {
      steps {
         echo 'Pushing to registry...'
-        sh 'docker login -u bridgez -p study708058'
+	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+	     sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
         sh 'docker tag cicd docker.io/bridgez/cicd'
         sh 'docker push docker.io/bridgez/cicd'
+	}
      }
    }
    stage('Deploy Application') {
