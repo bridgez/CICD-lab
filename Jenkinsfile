@@ -5,7 +5,7 @@ pipeline {
       stage('Build image') {
         steps {
           echo 'Building image...'
-	  build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+	  build_tag=sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
 	  if (env.BRANCH_NAME != 'master') {
               build_tag = "${env.BRANCH_NAME}-${build_tag}"
             }
