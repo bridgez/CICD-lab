@@ -12,7 +12,7 @@ pipeline {
             }
 	  }
 	//  sh 'docker build -t cicd:${build_tag} .'
-	  sh "docker build -t bridgez/jenkins-demo:${build_tag} ."
+	  sh "docker build -t bridgez/cicd:${build_tag} ."
           echo "Running ${env.BUILD_ID} ${env.BUILD_DISPLAY_NAME} on ${env.NODE_NAME} and JOB ${env.JOB_NAME}"
         }
    }
