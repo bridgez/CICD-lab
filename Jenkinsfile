@@ -16,7 +16,7 @@ pipeline {
         //    }
 	//  }
 	//  sh 'docker build -t cicd:${build_tag} .'
-	  sh "docker build -t cicd:${build_tag} ."
+	  sh "docker build -t cicd:${BUILD_TAG}  ."
           echo "Running ${env.BUILD_ID} ${env.BUILD_DISPLAY_NAME} on ${env.NODE_NAME} and JOB ${env.JOB_NAME}"
         }
    }
@@ -26,7 +26,7 @@ pipeline {
 	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	     sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
 	     sh 'docker tag cicd:${BUILD_TAG} bridgez/cicd:${BUILD_TAG}'
-             sh 'docker push bridgez/cicd:${build_tag}'
+             sh 'docker push bridgez/cicd:${BUILD_TAG}'
 	}
      }
    }
